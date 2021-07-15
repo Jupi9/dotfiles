@@ -122,7 +122,7 @@ set -o vi
 #      ALIASES
 #-------------------
 
-alias ll="ls -alF --color=auto --group-directories-first"	
+alias ll="ls -AlF --color=auto --group-directories-first"	
 alias ls="ls -l --color=auto --group-directories-first"
 alias mv="mv -i"
 alias rm="rm -i"

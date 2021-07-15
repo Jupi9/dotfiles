@@ -13,3 +13,9 @@ set showcmd
 
 " Searching
 set ignorecase
+
+" Disabling arrow keys to learn hjkl
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
