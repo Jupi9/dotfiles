@@ -81,16 +81,16 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+set $ws1 "1: Main"
+set $ws2 "2: Social"
+set $ws3 "3: Steam"
+set $ws4 "4: Bitwarden"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10: Music"
 
 #WORKSPACE OUTPUTS
 
@@ -124,6 +124,14 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# AUTOMATICALLY PUT CLIENTS ON SPECIFIC WORKSPACES (Find class with xprop)
+assign [class="Brave-browser"] $ws1
+assign [class="discord"] $ws2
+assign [class="Bitwarden"] $ws4
+assign [class="Steam"] $ws3
+for_window [class="Spotify"] move to workspace $ws10
+assign [class="Alacritty"] $ws1
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -151,8 +159,10 @@ bindsym $mod+r mode "resize"
 	exec --no-startup-id  ~/.screenlayout/layout13.sh
 	exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
 	exec_always xrandr --output DVI-D-0 --rate 144.00 --mode 1920x1080 --pos 2560x180 --rotate normal --output DP-0 --rate 165.00 --primary --mode 2560x1440 --pos 0x0 --rotate normal  
-	exec discord
-	exec steam
+	exec --no-startup-id discord
+	exec --no-startup-id steam
+	exec --no-startup-id spotify
+	exec --no-startup-id bitwarden-desktop
 	
 # CUSTOM KEYBINDS
 	bindsym $mod+b exec brave
