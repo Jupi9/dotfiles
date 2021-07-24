@@ -1,3 +1,9 @@
+#     _             _     _               _              
+#    | |_   _ _ __ (_)   | |__   __ _ ___| |__  _ __ ___ 
+# _  | | | | | '_ \| |   | '_ \ / _` / __| '_ \| '__/ __|
+#| |_| | |_| | |_) | |  _| |_) | (_| \__ \ | | | | | (__ 
+# \___/ \__,_| .__/|_| (_)_.__/ \__,_|___/_| |_|_|  \___|
+#            |_|                                         
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -125,7 +131,6 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias la="ls -Ah"
 alias grep="grep --color=auto"
 alias c="clear"
-alias p="sudo pacman"
 alias sdn="sudo shutdown now"
 alias yt="youtube-dl --add-metadata -ic" #Download youtube videos
 
@@ -136,6 +141,7 @@ alias yt="youtube-dl --add-metadata -ic" #Download youtube videos
 export EDITOR=vim
 export VISUAL=vim
 export BROWSER="/usr/bin/brave"
+export LC_ALL=C
 
 #----------------
 #      BINDS
@@ -158,13 +164,13 @@ fi
 
 #!/bin/sh
 #
-# ufetch-manjaro - tiny system info for manjaro
+# ufetch-arch - tiny system info for arch
 
 ## INFO
 
 # user is already defined
-host="$(hostname)"
-os='Manjaro'
+host="$(cat /etc/hostname)"
+os='Arch Linux'
 kernel="$(uname -sr)"
 uptime="$(uptime -p | sed 's/up //')"
 packages="$(pacman -Q | wc -l)"
@@ -221,21 +227,21 @@ if [ -x "$(command -v tput)" ]; then
 fi
 
 # you can change these
-lc="${reset}${bold}${green}"        # labels
-nc="${reset}${bold}${green}"        # user and hostname
+lc="${reset}${bold}${blue}"         # labels
+nc="${reset}${bold}${blue}"         # user and hostname
 ic="${reset}"                       # info
-c0="${reset}${green}"               # first color
+c0="${reset}${blue}"                # first color
 
 ## OUTPUT
 
 cat <<EOF
 
-${c0}  ||||||||| ||||  ${nc}${USER}${ic}@${nc}${host}${reset}
-${c0}  ||||||||| ||||  ${lc}OS:        ${ic}${os}${reset}
-${c0}  ||||      ||||  ${lc}KERNEL:    ${ic}${kernel}${reset}
-${c0}  |||| |||| ||||  ${lc}UPTIME:    ${ic}${uptime}${reset}
-${c0}  |||| |||| ||||  ${lc}PACKAGES:  ${ic}${packages}${reset}
-${c0}  |||| |||| ||||  ${lc}SHELL:     ${ic}${shell}${reset}
-${c0}  |||| |||| ||||  ${lc}${uitype}:        ${ic}${ui}${reset}
+${c0}        /\\         ${nc}${USER}${ic}@${nc}${host}${reset}
+${c0}       /  \\        ${lc}OS:        ${ic}${os}${reset}
+${c0}      /\\   \\       ${lc}KERNEL:    ${ic}${kernel}${reset}
+${c0}     /  __  \\      ${lc}UPTIME:    ${ic}${uptime}${reset}
+${c0}    /  (  )  \\     ${lc}PACKAGES:  ${ic}${packages}${reset}
+${c0}   / __|  |__\\\\    ${lc}SHELL:     ${ic}${shell}${reset}
+${c0}  /.\`        \`.\\   ${lc}${uitype}:        ${ic}${ui}${reset}
 
 EOF
