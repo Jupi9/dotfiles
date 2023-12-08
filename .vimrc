@@ -13,9 +13,22 @@ set showcmd
 
 " Searching
 set ignorecase
+set hlsearch
+set incsearch
 
-" Disabling arrow keys to learn hjkl
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" Set tab to 4 spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+" Convert tabs to spaces
+set expandtab
+set autoindent
+set fileformat=unix
+
+" Basics
+set nocompatible
+set encoding=utf-8
+set wildmode=longest,list,full
+
+" Replace all aliased to S
+nnoremap S :%s//g<Left><Left>
